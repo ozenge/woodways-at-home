@@ -1,5 +1,4 @@
 let P=(x,f,...fs)=>fs.length?Px(f(x),...fs):f?f(x):x;
-let Px=(...fs)=>x=>Px(x,...fs);
 let L=x=>{console.log(x);return x;};
 let clone=x=>JSON.parse(JSON.stringify(x));
 let match=(a,b)=>JSON.stringify(a)==JSON.stringify(b);
@@ -100,7 +99,7 @@ let draw=(g,s)=>{
 		r:[0xD83E,0xDEA8],g:[0xD83D,0xDEA9],p:[0xD83C,0xDF00],s:[0xD83C,0xDF1F],
 		F:[0xD83D,0xDC15],B:[0xD83E,0xDDAC],D:[0xD83E,0xDD86],X:[0xD83D,0xDCA5] //dog F for consistency
 	}[x]);
-	let cw=800,gh=g.length;gw=g[0].length,w=cw/Math.max(gh,gw),oy=(cw-gh*w)/2,ox=(cw-gw*w)/2;  //w:side-length
+	let cw=800,gh=g.length;gw=g[0].length,w=Math.ceil(cw/Math.max(gh,gw)),oy=(cw-gh*w)/2,ox=(cw-gw*w)/2;  //w:side-length
 	ctx.clearRect(0,0,cw,cw);
 	for(let[x,i,j]of i2a(g).reverse()){
 		let[dx,dy]=[ox+w*j,oy+w*i];
