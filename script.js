@@ -40,12 +40,8 @@ let updMenu=_=>{
 level=(_=>{
 	let s,l=[{l:0}],ll=0;
 	for(let ln of level.trim().split(";")){
-		if(!ln.length)ll=0;
-		if(!ll){
-			if(/[a-z]/.test(ln)){s=ln;continue;}
-			if(/[A-Z]/.test(ln)){ll=+ln.slice(1);l.push({l:ll,s,g:[]});continue;}
-			continue;
-		}
+		if(ln[0]=="L"){ll=+ln.slice(1);l.push({l:ll,s,g:[]});continue;}
+		if(/^[a-z]{6}$/.test(ln)){s=ln;continue;}
 		l[ll].g.push(P(
 			ln.match(/[A-Z].|[^A-Z]/g),
 			x=>x.map(x=>x=="."?{t:0}:/[A-Z]/.test(x)?{t:x[1]!="."?x[1]:0,a:x[0],s}:{t:x,s}),
@@ -53,7 +49,6 @@ level=(_=>{
 	}
 	return l;
 })();
-
 
 //global
 let vs={u:[-1,0],d:[1,0],l:[0,-1],r:[0,1]},W=window;
