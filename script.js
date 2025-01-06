@@ -140,7 +140,7 @@ let backBtn=_=>{//only happens when mode:1
 };
 let zBtn=_=>{
 	if(state.e==3||history.length<2)return;//if won or no history, don't undo
-	if(state.e==1)history.pop();state=JSON.parse(history[history.length-1]);draw(state.g);
+	history.pop();state=JSON.parse(history[history.length-1]);draw(state.g);
 };
 let dirBtn=v=>{                                     //v:vector
 	if(v&&state.e-1)return;                           //player moves only in neutral,ignore won state in mode 0
@@ -156,7 +156,7 @@ let dirBtn=v=>{                                     //v:vector
 		unlocked=uniq([...unlock,...unlocked]);done=uniq([lv,...[unlocked.includes(gg)?[gg]:[]],...done]); //write to array
 		localStorage.done=JSON.stringify(done);localStorage.unlocked=JSON.stringify(unlocked);updMenu();   //write to localStorage
 	}
-	if(state.e==1)history.push(JSON.stringify(state)); //stable->add to history
+	history.push(JSON.stringify(state)); //add to history
 };
 
                             W["restart-btn"].addEventListener("click",rBtn);
