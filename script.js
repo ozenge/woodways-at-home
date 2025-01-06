@@ -12,8 +12,8 @@ let i2=function*(a){
 let i2a=a=>[...i2(a)];
 let uniq=a=>a.filter((x,i)=>a.indexOf(x)==i);//scalar only
 
-let level=`spring\n\nL1\n6,6\n......\n.lwlll\n.lr.g.\nlFwlwrl\n.l.lll\n......\n\nL2\n6,5\n....r.\nFlFlwlgg\n.lrl..\n.lll..\n......\n\nL3\n5,5\n.r...\nFll...\nllggl\nFllr..\n.....\n\nL4\n6,5\n......\n...wl.\n.rlglr\nFlwgwFl.\n......\n\nL5\n5,5\n.....\n.l...\n.Dwrg.\n.l...\n.....\n\nL6\n4,4\nFll..\nD.wr.\ngw..\n..g.\n\nL7\n4,4\nllrl\nBlwlg\nFlwlg\nlllw\n\nL8\n5,5\n..g..\nwg.gr\nwFwD.Bl.\nwwrl.\n.....\n\nL9\n5,5\n.....\n.g...\n.lgr.\n.FlBlDg.\n.....\n\nL10\n5,5\n...lr\n.Blwg.\nrFllg.\nlDlwg.\n...r.\n\nL11\n5,5\n....r\nBlwgww\nlrFwgw\nDlgr..\n.....\n\nL12\n5,6\n.....\n.lgll\n.lglr\n.lgll\n.BlBlBl.\n.....\n\nL13\n5,5\n.....\n.lBgl.\n.grl.\nrDlgFl.\n.lll.\n\nL14\n5,5\nFllDllBl\nrlrlr\nll.ww\nlr.rw\ng.g.g\n\nL15\n5,5\n..lll\n.lgrl\ngg.ll\n.lll.\nDwFlBlr.\n\nL16\n6,5\n......\n.Dg.Dwr.\n..Fgl..\n.rwg..\n......\n\nL17\n5,6\nDlFl...\nlrr..\nlwgg.\nlwgg.\nlrr..\nDlFl...\n\nL18\n5,5\n.....\nBlrlg.\nDlFlwrg\nrllgw\n...r.\n\nL19\n5,4\n.wgll\n.g.rFl\ngwrBl.\n.rBll.\n\nL20\n5,4\nlllgl\nlr.gw\nFlBl.g.\nD.llr.\n\nL21\n5,3\n...gg\nr.rg.\nlDlFlBl.\n\nL22\n4,5\nwwll\nwrBlr\nwFglg\n..D.r\n.g..\n\nwinter\n\nL23\n6,5\n......\n.Fgiir.\n.Dliig.\n.Bgiir.\n......\n\nL24\n6,6\n......\n.Fllwg.\n.Dliwgr\n.Bliig.\n.lr...\n......\n\nL25\n6,5\n......\nBllr..l\nFlDliiig\nllw.gg\n......\n\nL26\n5,4\nFw.Dw.Bw\ni.i.i\nlwlgl\n..g.g\n\nL27\n6,5\n..w...\nrFlii.g\n.Dliilg\nrBliiwg\nlll...\n\nL28\n4,6\nrl..\nllr.\nBllw.\nFgwr.\nDlglr\n..g.\n\nL29\n6,6\n......\nlliig.\niFllll.\niFlBgrl.\n.liig.\n......\n\nL30\n5,4\nlilil\nwiiiw\ngiiiw\n.FgBlDg.\n\nL31\n5,5\nBliriBl\nigigi\nriiir\nigigi\nBliriBl\n\nL32\n5,5\nBllg.g\n.wl..\nFlllg.\nlrl..\nDl.l..\n\nL33\n4,4\ngggr\nDiiiBl\niFlil\n.www\n\nL34\n5,6\n.....\n.rgg.\n.lgg.\n.rii.\n.rFlFl.\n...D.D.\n\nL35\n5,5\n.rgg.\n.wllg\n..ii.\n.iii.\n.wFlFl.\n\nL36\n5,5\n.wFlll\nglill\ng.iD.w\ngwill\n.lBlll\n\nL37\n5,7\n.wFl..\n.gBlg.\nliBiil\nliril\n.lgl.\n.lll.\n.....\n\nL38\n5,5\n..r.l\n.rg.g\n.l.rg\n.BlFlll\n..D...\n\nL39\n5,5\n..rll\ngFwDgBll\nwiiii\ngrg.i\nwwDlll\n\nautumn\n\nL40\n5,5\n.....\n.ggg.\n.l.w.\npDlFlBlp\n.....\n\nL41\n5,5\n.rw..\n.lFll.\n.pgp.\n.lFll.\n.gw..\n\nL42\n6,6\n......\n...lr.\n.pFlBlp.\nrl..lr\n.lppl.\n...p..\n\nL43\n5,5\n..g..\n..r..\npDlFgDlp\n..r..\n..g..\n\nL44\n4,4\nwll.\nFlrDll\nwBgwl\n.ggl\n\nL45\n5,5\n.g.Dg.\ngFlDgBll\np.l.p\nl.r.l\n.....\n\nL46\n6,6\n......\n.pllll\nrlgl.l\n..lg.l\n..FlBlpr\n......\n\nL47\n5,4\n..ggg\nFwp.w.\n..rwD.\n..D.p.\n\nL48\n5,4\n..r..\np.r.p\nD.Dwr..\nDgDgFggg\n\nL49\n4,4\ng...\nBgiwFl\npiip\nwlw.\n\nL50\n5,4\nFwFw.FwFw\npllll\nggggw\n.wllp\n\nL51\n5,4\n..D...\nFwp.pB.\nwgrll\ngwg.r\n\nL52\n6,6\n.plll.\n..rl..\n..BlFlD..\n..wp..\n.ggg..\n......\n\nL53\n7,5\n..r....\n.wpgip.\n.iiiii.\n.glFlDlg.\n..llBl..\n\nL54\n5,5\n.pBll.\n...r.\ngplDl.\nFggl..\n.....\n\nL55\n4,4\npw..\nFllrg\n.wgl\nBlgpDl\n\nspring\n\nL56\n7,6\n.......\n.rlgwr.\n.ll.lw.\n.lg.g.r\nrpFlBlDlp.\n.......`;
-let menu=`spring\n0105061312161922\n020307..11141720\n..04080910151821\nwinter\n..37343128....23\n..36333027262524\n3938353239......\nautumn\n40..454851......\n4142434649525354\n....444750....55\nspring\n............5756`;
+let level=`spring\n\nL1\n......\n.lwlll\n.lr.g.\nlFwlwrl\n.l.lll\n......\n\nL2\n....r.\nFlFlwlgg\n.lrl..\n.lll..\n......\n\nL3\n.r...\nFll...\nllggl\nFllr..\n.....\n\nL4\n......\n...wl.\n.rlglr\nFlwgwFl.\n......\n\nL5\n.....\n.l...\n.Dwrg.\n.l...\n.....\n\nL6\nFll..\nD.wr.\ngw..\n..g.\n\nL7\nllrl\nBlwlg\nFlwlg\nlllw\n\nL8\n..g..\nwg.gr\nwFwD.Bl.\nwwrl.\n.....\n\nL9\n.....\n.g...\n.lgr.\n.FlBlDg.\n.....\n\nL10\n...lr\n.Blwg.\nrFllg.\nlDlwg.\n...r.\n\nL11\n....r\nBlwgww\nlrFwgw\nDlgr..\n.....\n\nL12\n.....\n.lgll\n.lglr\n.lgll\n.BlBlBl.\n.....\n\nL13\n.....\n.lBgl.\n.grl.\nrDlgFl.\n.lll.\n\nL14\nFllDllBl\nrlrlr\nll.ww\nlr.rw\ng.g.g\n\nL15\n..lll\n.lgrl\ngg.ll\n.lll.\nDwFlBlr.\n\nL16\n......\n.Dg.Dwr.\n..Fgl..\n.rwg..\n......\n\nL17\nDlFl...\nlrr..\nlwgg.\nlwgg.\nlrr..\nDlFl...\n\nL18\n.....\nBlrlg.\nDlFlwrg\nrllgw\n...r.\n\nL19\n.wgll\n.g.rFl\ngwrDll\n.rBll.\n\nL20\nlllgl\nlr.gw\nFlBl.g.\nD.llr.\n\nL21\n...gg\nr.rg.\nlDlFlBl.\n\nL22\nwwll\nwrBlr\nwFglg\n..D.r\n.g..\n\nwinter\n\nL23\n......\n.Fgiir.\n.Dliig.\n.Bgiir.\n......\n\nL24\n......\n.Fllwg.\n.Dliwgr\n.Bliig.\n.lr...\n......\n\nL25\n......\nBllr..l\nFlDliiig\nllw.gg\n......\n\nL26\nFw.Dw.Bw\ni.i.i\nlwlgl\n..g.g\n\nL27\n..w...\nrFlii.g\n.Dliilg\nrBliiwg\nlll...\n\nL28\nrl..\nllr.\nBllw.\nFgwr.\nDlglr\n..g.\n\nL29\n......\nlliig.\niFllll.\niFlDgrl.\n.liig.\n......\n\nL30\nlilil\nwiiiw\ngiiiw\n.FgBlDg.\n\nL31\nBliriBl\nigigi\nriiir\nigigi\nBliriBl\n\nL32\nBllg.g\n.wl..\nFlllg.\nlrl..\nDl.l..\n\nL33\ngggr\nDiiiBl\niFlil\n.www\n\nL34\n.....\n.rgg.\n.lgg.\n.rii.\n.rFlFl.\n...D.D.\n\nL35\n.rgg.\n.wllg\n..ii.\n.iii.\n.DwFlFl.\n\nL36\n.wFlll\nglill\ng.iD.w\ngwill\n.lBlll\n\nL37\n.wFl..\n.gDlg.\nliBiil\nliril\n.lgl.\n.lll.\n.....\n\nL38\n..r.l\n.rg.g\n.l.rg\n.BlFlll\n..D...\n\nL39\n..rll\ngFwDgBll\nwiiii\ngrg.i\nwwDlll\n\nautumn\n\nL40\n.....\n.ggg.\n.l.w.\npDlFlBlp\n.....\n\nL41\n.rw..\n.lFll.\n.pgp.\n.lFll.\n.gw..\n\nL42\n......\n...lr.\n.pFlBlp.\nrl..lr\n.lppl.\n...p..\n\nL43\n..g..\n..r..\npDlFgDlp\n..r..\n..g..\n\nL44\nwll.\nFlrDll\nwBgwl\n.ggl\n\nL45\n.g.Dg.\ngFlDgBll\np.l.p\nl.r.l\n.....\n\nL46\n......\n.pllll\nrlgl.l\n..lg.l\n..FlBlpr\n......\n\nL47\n..ggg\nFwp.w.\n..rwD.\n..D.p.\n\nL48\n..r..\np.r.p\nD.Dwr..\nDgDgFggg\n\nL49\ng...\nBgiwFl\npiip\nwlw.\n\nL50\nFwFw.FwFw\npllll\nggggw\n.wllp\n\nL51\n..D...\nFwp.pB.\nwgrll\ngwg.r\n\nL52\n.plll.\n..rl..\n..BlFlD..\n..wp..\n.ggg..\n......\n\nL53\n..r....\n.wpgip.\n.iiiii.\n.glFlDlg.\n..llBl..\n\nL54\n.pBll.\n...r.\ngplDl.\nFggl..\n.....\n\nL55\npw..\nFllrg\n.wgl\nBlgpDl\n\nspring\n\nL56\n.......\n.rlgwr.\n.ll.lw.\n.lg.g.r\nrpFlBlDlp.\n.......`;
+let menu=`spring\n0105061312161922\n020307..11141720\n..04080910151821\nwinter\n..37343128....23\n..36333027262524\n3938353229......\nautumn\n40..454851......\n4142434649525354\n....444750....55\nspring\n............5756`;
 
 let gg=57,lv=1;
 
@@ -46,7 +46,6 @@ level=(_=>{
 			if(/[A-Z]/.test(ln)){ll=+ln.slice(1);l.push({l:ll,s,g:[]});continue;}
 			continue;
 		}
-		if(/\d/.test(ln)){[l[ll].w,l[ll].h]=ln.split(",").map(x=>+x);continue;}
 		l[ll].g.push(P(
 			ln.match(/[A-Z].|[^A-Z]/g),
 			x=>x.map(x=>x=="."?{t:0}:/[A-Z]/.test(x)?{t:x[1]!="."?x[1]:0,a:x[0],s}:{t:x,s}),
@@ -74,8 +73,8 @@ let move=(s,v)=>{
 		if(!x.m)continue;x.m=0;                           //moving only
 		if(!x.v){
 			let[pi,pj]=ps.filter(y=>!match(y,[i,j]))[0];            //portals
-			if(g[pi][pj].a){lost=1;g[pi][pj].a="X";x.a=0;continue;} //portal collision
-			g[pi][pj].a=x.a;x.a=0;
+			if(g[pi][pj].a&&!g[pi][pj].m){lost=1;g[pi][pj].a="X";x.a=0;continue;} //portal collision
+			[g[pi][pj].a,x.a]=[x.a,g[pi][pj].a];g[pi][pj].m=0;
 		}else{
 			let[di,dj]=[i+x.v[0],j+x.v[1]];                 //slide to non-rock space
 			if(g[di]&&g[di][dj]&&g[di][dj].t!="r"){
@@ -88,10 +87,10 @@ let move=(s,v)=>{
 	for(let[x,i,j]of i2(g)){                                    //resolve incomings
 		if(!x.i)continue;                                         //incoming only
 		if(x.a){x.a="X";x.i=x.iv=0;lost=1;continue;}              //collision
-		let iv=x.iv;x.a=x.i;x.i=x.iv=0;                           //place down,clear i,iv
+		let xi=x.i,iv=x.iv;x.a=x.i;x.i=x.iv=0;                    //place down,clear i,iv
 		if(!x.t&&x.a!="D")    {x.a="X";lost=1;continue;}          //only Ducks can stand on water
 		if(x.t=="i")          {x.v=iv;x.m=1;inMotion=1;continue;} //slip on ice
-		if(x.t=="p"&&mode)    {       x.m=1;inMotion=1;continue;} //portal (mode 1)
+		if(x.t=="p"&&mode)    {x.v=0; x.m=1;inMotion=1;continue;} //portal (mode 1)
 		if(x.t=="w"&&x.a=="B"){x.t=0;x.a="X";lost=1;continue;}    //Bison can't stand on wood
 	}
 	if(lost)return{g,e:2};if(inMotion)return{g,e:0};
@@ -164,9 +163,7 @@ let dirBtn=v=>{                                     //v:vector
                             W["back"]       .addEventListener("click",backBtn);
                             W["undo-btn"]   .addEventListener("click",zBtn);
 "lurd".split("").forEach(x=>W[x+"-btn"]     .addEventListener("click",_=>{dirBtn(vs[x]);}));
-let keyFn={
-	w:_=>{dirBtn(vs.u);},a:_=>{dirBtn(vs.l);},s:_=>{dirBtn(vs.d);},d:_=>{dirBtn(vs.r);},
-	r:rBtn,z:zBtn,
-};[keyFn.ArrowUp,keyFn.ArrowLeft,keyFn.ArrowDown,keyFn.ArrowRight]=[keyFn.w,keyFn.a,keyFn.s,keyFn.d];
+let keyFn={w:_=>{dirBtn(vs.u);},a:_=>{dirBtn(vs.l);},s:_=>{dirBtn(vs.d);},d:_=>{dirBtn(vs.r);},r:rBtn,z:zBtn,Escape:backBtn};
+[keyFn.ArrowUp,keyFn.ArrowLeft,keyFn.ArrowDown,keyFn.ArrowRight,keyFn.Enter]=[keyFn.w,keyFn.a,keyFn.s,keyFn.d,keyFn.r];
 window.addEventListener("keydown",e=>{(keyFn[e.key]||(_=>0))();});
 back.style.display="none";draw(state.g);
