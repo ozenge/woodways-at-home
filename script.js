@@ -31,6 +31,7 @@ let updMenu=_=>{
 	for(let[x,i,j]of i2(menu)){
 		if(!x.l)continue;
 		x.t=done.includes(x.l)?"g":unlocked.includes(x.l)?"p":"r";
+		if(unlocked.includes(x.l))x.u=1;
 		if(x.l==lv)x.a="F";else x.a=0;
 	}
 };updMenu();
