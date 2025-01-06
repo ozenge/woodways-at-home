@@ -66,14 +66,15 @@ let move=(s,v)=>{
 	let g_=s.g,e=s.e;
 	if(e>1)return{g_,e};                 //level ended
 	let g=clone(g_);                     //clone
+	let lost=0,inMotion=0;
 	if(e==1&&v){for(let[x,i,j]of i2(g))if(x.a){x.m=1;x.v=v}return move({g,e});} //induce vel
 	let ps=i2a(g).filter(([x,i,j])=>x.t=="p").map(x=>x.slice(1));         //portals
 	for(let[x,i,j]of i2(g)){                            //make incomings
 		if(!x.m)continue;x.m=0;                           //moving only
 		if(!x.v){
-			let[pi,pj]=ps.filter(y=>!match(y,[i,j]))[0];    //portals
+			let[pi,pj]=ps.filter(y=>!match(y,[i,j]))[0];            //portals
+			if(g[pi][pj].a){lost=1;g[pi][pj].a="X";x.a=0;continue;} //portal collision
 			g[pi][pj].a=x.a;x.a=0;
-			L("portal alert");
 		}else{
 			let[di,dj]=[i+x.v[0],j+x.v[1]];                 //slide to non-rock space
 			if(g[di]&&g[di][dj]&&g[di][dj].t!="r"){
@@ -83,7 +84,7 @@ let move=(s,v)=>{
 			x.v=0;
 		}
 	}
-	let lost=0,inMotion=0;
+	
 	for(let[x,i,j]of i2(g)){                                    //resolve incomings
 		if(!x.i)continue;                                         //incoming only
 		if(x.a){x.a="X";x.i=x.iv=0;lost=1;continue;}              //collision
@@ -102,7 +103,7 @@ let move=(s,v)=>{
 //g:grid,s:season(if cell has none)
 let ctx=window.level.getContext("2d");ctx.textAlign="center";
 let draw=(g,s)=>{
-	let co={W:"darkturquoise",w:"sienna",i:"cyan",lspring:"lightgreen",lwinter:"lightcyan",lautumn:"bisque"};
+	let co={W:"steelblue",w:"chocolate",i:"cyan",lspring:"lightgreen",lwinter:"azure",lautumn:"bisque"};
 	let em=x=>String.fromCharCode(...{
 		r:[0xD83E,0xDEA8],g:[0xD83D,0xDEA9],p:[0xD83C,0xDF00],s:[0xD83C,0xDF1F],
 		F:[0xD83D,0xDC15],B:[0xD83E,0xDDAC],D:[0xD83E,0xDD86],X:[0xD83D,0xDCA5] //dog F for consistency
@@ -111,12 +112,12 @@ let draw=(g,s)=>{
 	ctx.clearRect(0,0,cw,cw);
 	for(let[x,i,j]of i2a(g).reverse()){
 		let[dx,dy]=[ox+w*j,oy+w*i];
-		ctx.strokeStyle="rgba(0,0,0,0.25)";ctx.lineWidth=5;                                          //bg
+		ctx.strokeStyle="rgba(0,0,0,0.25)";ctx.lineWidth=10;                                          //bg
 		ctx.fillStyle=(!x.t)?co.W:/[wi]/.test(x.t)?co[x.t]:co["l"+(x.s||s)];ctx.fillRect(dx,dy,w,w);
 		if(x.t)ctx.strokeRect(dx,dy,w,w);ctx.fillStyle="black";dx+=w/2;dy+=w*0.75; //why?
-		ctx.font=`bold ${w*0.67}px sans-serif`;ctx.strokeStyle="white";                              //fg
-		if(/[rgp]/.test(x.t))ctx.fillText(em(x.l==gg&&x.u?"s":x.t),dx,dy);
-		if(x.l&&x.t!="r"){let p=[x.l==gg?"gg":x.l,dx,dy];ctx.strokeText(...p);ctx.fillText(...p);}
+		ctx.font=`bold ${w*0.67}px sans-serif`;ctx.strokeStyle="white";ctx.lineWidth=5;               //fg
+		if(/[rgp]/.test(x.t)){let p=[em(x.l==gg&&x.u?"s":x.t),dx,dy];ctx.strokeText(...p);ctx.fillText(...p);}
+		if(x.l&&x.t!="r")    {let p=[x.l==gg?"gg":x.l,dx,dy];        ctx.strokeText(...p);ctx.fillText(...p);}
 		if(x.a)ctx.fillText(em(x.a),dx,dy);
 	}
 }
