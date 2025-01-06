@@ -1,0 +1,45 @@
+html, body {
+	height: 100%;
+	overflow: hidden;
+}
+
+body {
+	margin: 0;
+}
+
+#container {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
+}
+
+#title {
+	width: min(100vw, 50vh);
+	font-size: 2vh;
+}
+
+#level {
+	width: min(100vw, 50vh);
+	height: min(100vw, 50vh);
+/*	border: 1px solid red;*/
+}
+
+#control-table {
+	width: min(100vw, 50vh);
+}
+#control-table td:not(:empty) {
+	width: min(20vw, 10vh);
+	height: min(20vw, 10vh);
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	font-size: 6vh;
+  border-radius: 3px;
+  border: 1px solid #999;
+  padding: 0;
+  background: #F0F0F0;
+  user-select: none;
+}
