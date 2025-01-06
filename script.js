@@ -63,9 +63,7 @@ let dbgG=g=>{console.log(g.map(r=>r.map(x=>`${x.a||" "}${x.t||"."}`).join("")).j
 //{g:grid,e:ended},v:vector=>g:grid,e:ended
 //e->0:in motion,1:neutral,2:lose,3:win
 let move=(s,v)=>{
-	let g_=s.g,e=s.e;
-	if(e>1)return{g_,e};                 //level ended
-	let g=clone(g_);                     //clone
+	let g_=s.g,e=s.e;if(e>1)return{g_,e};let g=clone(g_);
 	let lost=0,inMotion=0;
 	if(e==1&&v){for(let[x,i,j]of i2(g))if(x.a){x.m=1;x.v=v}return move({g,e});} //induce vel
 	let ps=i2a(g).filter(([x,i,j])=>x.t=="p").map(x=>x.slice(1));         //portals
@@ -73,7 +71,7 @@ let move=(s,v)=>{
 		if(!x.m)continue;x.m=0;                           //moving only
 		if(!x.v){
 			let[pi,pj]=ps.filter(y=>!match(y,[i,j]))[0];                          //the other portal
-			if(g[pi][pj].a&&!g[pi][pj].m){lost=1;g[pi][pj].a="X";x.a=0;continue;} //portal collision
+			if(g[pi][pj].a&&!g[pi][pj].m){g[pi][pj].a="X";x.a=0;continue;} //portal collision
 			[g[pi][pj].a,x.a]=[x.a,g[pi][pj].a];g[pi][pj].m=0;                    //swap places
 		}else{
 			let[di,dj]=[i+x.v[0],j+x.v[1]];                 //slide to non-rock space
@@ -86,17 +84,17 @@ let move=(s,v)=>{
 	}
 	for(let[x,i,j]of i2(g)){                                    //resolve incomings
 		if(!x.i)continue;                                         //incoming only
-		if(x.a){x.a="X";x.i=x.iv=0;lost=1;continue;}              //collision
+		if(x.a){x.a="X";x.i=x.iv=0;;continue;}                    //collision
 		let xi=x.i,iv=x.iv;x.a=x.i;x.i=x.iv=0;                    //place down,clear i,iv
-		if(!x.t&&x.a!="D")    {x.a="X";lost=1;continue;}          //only Ducks can stand on water
+		if(!x.t&&x.a!="D")    {x.a="X";continue;}                 //only Ducks can stand on water
 		if(x.t=="i")          {x.v=iv;x.m=1;inMotion=1;continue;} //slip on ice
 		if(x.t=="p"&&mode)    {x.v=0; x.m=1;inMotion=1;continue;} //portal (mode 1)
-		if(x.t=="w"&&x.a=="B"){x.t=0;x.a="X";lost=1;continue;}    //Bison can't stand on wood
+		if(x.t=="w"&&x.a=="B"){x.t=0;x.a="X";continue;}           //Bison can't stand on wood
 	}
-	if(lost)return{g,e:2};if(inMotion)return{g,e:0};
-	for(let[x,i,j]of i2(g)){                                    //win detection
-		if(x.t=="g"&&!x.a)return{g,e:1};                          //goal without an animal
-	}return{g,e:3};
+	                       if(inMotion)      return{g,e:0}; //in motion
+	for(let[x,i,j]of i2(g))if(x.a=="X")      return{g,e:2}; //loss
+	for(let[x,i,j]of i2(g))if(!x.a&&x.t=="g")return{g,e:1}; //neutral
+	                                         return{g,e:3}; //win
 };
 
 //g:grid,s:season(if cell has none)
