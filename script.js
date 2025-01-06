@@ -151,11 +151,11 @@ let dirBtn=v=>{                                     //v:vector
 	if(mode&&state.e==3){                             //mode 1 only;won;update progress
 		blurb.innerHTML+=" completed!";
 		let unlocked=JSON.parse(localStorage.unlocked||"[1]"),done=JSON.parse(localStorage.done||"[]");
-		let li,lj;for(let[x,i,j]of i2(menu))if(x.l==lv){[li,lj]=[i,j];break;}                            //find coordinates in menu
-		let nbors="lurd".split("").map(x=>vs[x]).map(([vi,vj])=>[li+vi,lj+vj]).filter(n=>p2(menu,n));    //valid neighbors
+		let li,lj;for(let[x,i,j]of i2(menu))if(x.l==lv){[li,lj]=[i,j];break;}                              //find coordinates in menu
+		let nbors="lurd".split("").map(x=>vs[x]).map(([vi,vj])=>[li+vi,lj+vj]).filter(n=>p2(menu,n));      //valid neighbors
 		let unlock=nbors.map(([ni,nj])=>menu[ni][nj].l).filter(x=>x&&Math.abs(x-lv)<4);
-		done=uniq([lv,...done]);unlocked=uniq([...unlock,...unlocked]);                                  //write to array
-		localStorage.done=JSON.stringify(done);localStorage.unlocked=JSON.stringify(unlocked);updMenu(); //write to localStorage
+		unlocked=uniq([...unlock,...unlocked]);done=uniq([lv,...[unlocked.includes(gg)?[gg]:[]],...done]); //write to array
+		localStorage.done=JSON.stringify(done);localStorage.unlocked=JSON.stringify(unlocked);updMenu();   //write to localStorage
 	}
 	if(state.e==1)history.push(JSON.stringify(state)); //stable->add to history
 };
