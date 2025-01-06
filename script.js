@@ -99,12 +99,12 @@ let draw=(g,s)=>{
 		r:[0xD83E,0xDEA8],g:[0xD83D,0xDEA9],p:[0xD83C,0xDF00],s:[0xD83C,0xDF1F],
 		F:[0xD83D,0xDC15],B:[0xD83E,0xDDAC],D:[0xD83E,0xDD86],X:[0xD83D,0xDCA5] //dog F for consistency
 	}[x]);
-	let cw=800,gh=g.length;gw=g[0].length,w=Math.ceil(cw/Math.max(gh,gw))+1,oy=(cw-gh*w)/2,ox=(cw-gw*w)/2;  //w:side-length
+	let cw=800,gh=g.length;gw=g[0].length,w=(cw-20)/Math.max(gh,gw),oy=(cw-gh*w)/2,ox=(cw-gw*w)/2;  //w:side-length
 	ctx.clearRect(0,0,cw,cw);
 	for(let[x,i,j]of i2a(g).reverse()){
 		let[dx,dy]=[ox+w*j,oy+w*i];
-		ctx.strokeStyle="rgba(0,0,0,0.25)";ctx.lineWidth=10;                                          //bg
-		ctx.fillStyle=(!x.t)?co.W:/[wi]/.test(x.t)?co[x.t]:co["l"+(x.s||s)];ctx.fillRect(dx,dy,w,w);
+		ctx.strokeStyle="rgba(0,0,0,0.2)";ctx.lineWidth=10;                                          //bg
+		ctx.fillStyle=(!x.t)?co.W:/[wi]/.test(x.t)?co[x.t]:co["l"+(x.s||s)];ctx.fillRect(dx,dy,w+1,w+1);
 		if(x.t)ctx.strokeRect(dx,dy,w,w);ctx.fillStyle="black";dx+=w/2;dy+=w*0.75; //why?
 		ctx.font=`bold ${w*0.67}px sans-serif`;ctx.strokeStyle="white";ctx.lineWidth=5;               //fg
 		if(/[rgp]/.test(x.t)){let p=[em(x.l==gg&&x.u?"s":x.t),dx,dy];ctx.strokeText(...p);ctx.fillText(...p);}
