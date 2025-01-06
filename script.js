@@ -132,7 +132,7 @@ let backBtn=_=>{//only happens when mode:1
 	back.style.display="none";blurb.innerHTML="choose a level and press r";draw(state.g);
 };
 let zBtn=_=>{
-	if(state.e==3||history.length<2)return;//if won or no history, don't undo
+	if(!state.e%3||history.length<2)return;//if ongoing or won or no history, don't undo
 	history.pop();state=JSON.parse(history[history.length-1]);draw(state.g);
 };
 let dirBtn=v=>{                                     //v:vector
