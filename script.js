@@ -49,7 +49,7 @@ level=(_=>{
 		if(/\d/.test(ln)){[l[ll].w,l[ll].h]=ln.split(",").map(x=>+x);continue;}
 		l[ll].g.push(P(
 			ln.match(/[A-Z].|[^A-Z]/g),
-			x=>x.map(x=>x=="."?{t:0}:/[A-Z]/.test(x)?{t:x[1],a:x[0],s}:{t:x,s}),
+			x=>x.map(x=>x=="."?{t:0}:/[A-Z]/.test(x)?{t:x[1]!="."?x[1]:0,a:x[0],s}:{t:x,s}),
 		));
 	}
 	return l;
