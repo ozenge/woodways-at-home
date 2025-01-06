@@ -85,7 +85,6 @@ let move=(s,v)=>{
 			x.v=0;
 		}
 	}
-	
 	for(let[x,i,j]of i2(g)){                                    //resolve incomings
 		if(!x.i)continue;                                         //incoming only
 		if(x.a){x.a="X";x.i=x.iv=0;lost=1;continue;}              //collision
