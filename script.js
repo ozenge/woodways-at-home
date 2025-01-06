@@ -64,7 +64,6 @@ let dbgG=g=>{console.log(g.map(r=>r.map(x=>`${x.a||" "}${x.t||"."}`).join("")).j
 //e->0:in motion,1:neutral,2:lose,3:win
 let move=(s,v)=>{
 	let g_=s.g,e=s.e;if(e>1)return{g_,e};let g=clone(g_);
-	let lost=0,inMotion=0;
 	if(e==1&&v){for(let[x,i,j]of i2(g))if(x.a){x.m=1;x.v=v}return move({g,e});} //induce vel
 	let ps=i2a(g).filter(([x,i,j])=>x.t=="p").map(x=>x.slice(1));         //portals
 	for(let[x,i,j]of i2(g)){                            //make incomings
@@ -82,6 +81,7 @@ let move=(s,v)=>{
 			x.v=0;
 		}
 	}
+	let inMotion=0;
 	for(let[x,i,j]of i2(g)){                                    //resolve incomings
 		if(!x.i)continue;                                         //incoming only
 		if(x.a){x.a="X";x.i=x.iv=0;;continue;}                    //collision
