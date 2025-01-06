@@ -103,10 +103,10 @@ let draw=(g,s)=>{
 	ctx.clearRect(0,0,cw,cw);
 	for(let[x,i,j]of i2a(g).reverse()){
 		let[dx,dy]=[ox+w*j,oy+w*i];
-		ctx.strokeStyle="rgba(0,0,0,0.2)";ctx.lineWidth=10;                                          //bg
+		ctx.strokeStyle="rgba(0,0,0,0.2)";ctx.lineWidth=10;                                                   //bg
 		ctx.fillStyle=(!x.t)?co.W:/[wi]/.test(x.t)?co[x.t]:co["l"+(x.s||s)];ctx.fillRect(dx,dy,w+1,w+1);
 		if(x.t)ctx.strokeRect(dx,dy,w,w);ctx.fillStyle="black";dx+=w/2;dy+=w*0.75; //why?
-		ctx.font=`bold ${w*0.67}px sans-serif`;ctx.strokeStyle="white";ctx.lineWidth=3;               //fg
+		ctx.font=`bold ${w*0.67}px sans-serif`;ctx.fillStyle="white";ctx.strokeStyle="black";ctx.lineWidth=3; //fg
 		if(/[rgp]/.test(x.t)){let p=[em(x.l==gg&&x.u?"s":x.t),dx,dy];ctx.strokeText(...p);ctx.fillText(...p);}
 		if(x.l&&x.t!="r")    {let p=[x.l==gg?"gg":x.l,dx,dy];        ctx.strokeText(...p);ctx.fillText(...p);}
 		if(x.a)ctx.fillText(em(x.a),dx,dy);
