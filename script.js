@@ -133,7 +133,7 @@ let rBtn=_=>{
 };
 let backBtn=_=>{//only happens when mode:1
 	mode=0;state={g:menu,e:1};history=[JSON.stringify(state)];
-	back.style.display="none";blurb.innerHTML="choose a level";draw(state.g);
+	back.style.display="none";blurb.innerHTML="choose a level and press r";draw(state.g);
 };
 let zBtn=_=>{
 	if(state.e==3||history.length<1)return;//if won or no history, don't undo
