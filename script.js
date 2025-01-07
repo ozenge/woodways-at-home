@@ -79,7 +79,7 @@ let move=(s,v)=>{
 	for(let[x,i,j]of i2(g)){                                    //resolve incomings
 		if(!x.i)continue;                                         //incoming only
 		if(x.a){x.a="X";x.i=x.iv=0;;continue;}                    //collision
-		let xi=x.i,iv=x.iv;x.a=x.i;x.i=x.iv=0;                    //place down,clear i,iv
+		let iv=x.iv;x.a=x.i;x.i=x.iv=0;                           //place down,clear i,iv
 		if(!x.t&&x.a!="D")    {x.a="X";continue;}                 //only Ducks can stand on water
 		if(x.t=="i")          {x.v=iv;x.m=1;inMotion=1;continue;} //slip on ice
 		if(x.t=="p"&&mode)    {x.v=0; x.m=1;inMotion=1;continue;} //portal (mode 1)
