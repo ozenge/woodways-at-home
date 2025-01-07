@@ -51,7 +51,7 @@ level=(_=>{
 
 //global
 let vs={u:[-1,0],d:[1,0],l:[0,-1],r:[0,1]},W=window;
-let mode=0,state={g:menu,e:1},history=[JSON.stringify(state)];//lv declared earlier
+let mode=0,state={g:menu,e:1},history=[JSON.stringify(state)],undoing=0;//lv declared earlier
 let dbgG=g=>{console.log(g.map(r=>r.map(x=>`${x.a||" "}${x.t||"."}`).join("")).join("\n"));};//debug grid
 
 //{g:grid,e:ended},v:vector=>g:grid,e:ended
@@ -130,9 +130,9 @@ let backBtn=_=>{//only happens when mode:1
 	mode=0;state={g:menu,e:1};history=[JSON.stringify(state)];
 	back.style.display="none";blurb.innerHTML="choose a level and press r";draw(state.g);
 };
-let zBtn=_=>{
-	if(!state.e%3||history.length<2)return;//if ongoing or won or no history, don't undo
-	history.pop();state=JSON.parse(history[history.length-1]);draw(state.g);
+let zBtn=x=>{//x->auto undo
+	if(!state.e%3||history.length<2||!x&&undoing)return;//if ongoing or won or no history, don't undo
+	history.pop();state=JSON.parse(history[history.length-1]);draw(state.g);undoing=0;
 };
 let dirBtn=v=>{                                     //v:vector
 	if(v&&state.e-1)return;                           //player moves only in neutral,ignore won state in mode 0
@@ -150,7 +150,7 @@ let dirBtn=v=>{                                     //v:vector
 		setTimeout(backBtn,1000);                                                                           //autoback
 	}
 	history.push(JSON.stringify(state));              //add to history
-	if(state.e==2){setTimeout(zBtn,500);  return;}    //autoundo
+	if(state.e==2){undoing=1;setTimeout(_=>{zBtn(1);},500);}    //autoundo
 };
 
                             W["restart-btn"].addEventListener("click",rBtn);
