@@ -147,6 +147,7 @@ let dirBtn=v=>{                                     //v:vector
 		let unlock=nbors.map(([ni,nj])=>menu[ni][nj].l).filter(x=>x&&Math.abs(x-lv)<4);
 		unlocked=uniq([...unlock,...unlocked]);done=uniq([lv,...[unlocked.includes(gg)?[gg]:[]],...done]); //write to array
 		localStorage.done=JSON.stringify(done);localStorage.unlocked=JSON.stringify(unlocked);updMenu();   //write to localStorage
+		setTimeout(backBtn,1000);                                                                           //autoback
 	}
 	history.push(JSON.stringify(state)); //add to history
 };
