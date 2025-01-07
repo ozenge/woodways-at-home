@@ -138,7 +138,7 @@ let dirBtn=v=>{                                     //v:vector
 	if(v&&state.e-1)return;                           //player moves only in neutral,ignore won state in mode 0
 	state=move(state,v);draw(state.g);
 	if(!mode){if(state.e==3)state.e=1;if(state.e==1)menu=state.g};  //if mode 0,reset to neutral if win,update menu
-	if(!state.e){setTimeout(dirBtn,200);return;}      //call with no args
+	if(!state.e)  {setTimeout(dirBtn,200);return;}    //call with no args
 	if(mode&&state.e==3){                             //mode 1 only;won;update progress
 		blurb.innerHTML+=" completed!";
 		let unlocked=JSON.parse(localStorage.unlocked||"[1]"),done=JSON.parse(localStorage.done||"[]");
@@ -149,7 +149,8 @@ let dirBtn=v=>{                                     //v:vector
 		localStorage.done=JSON.stringify(done);localStorage.unlocked=JSON.stringify(unlocked);updMenu();   //write to localStorage
 		setTimeout(backBtn,1000);                                                                           //autoback
 	}
-	history.push(JSON.stringify(state)); //add to history
+	history.push(JSON.stringify(state));              //add to history
+	if(state.e==2){setTimeout(zBtn,500);  return;}    //autoundo
 };
 
                             W["restart-btn"].addEventListener("click",rBtn);
