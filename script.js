@@ -78,7 +78,7 @@ let move=(s,v)=>{
 	let inMotion=0;
 	for(let[x,i,j]of i2(g)){                                    //resolve incomings
 		if(!x.i)continue;                                         //incoming only
-		if(x.a){x.a="X";x.i=x.iv=0;;continue;}                    //collision
+		if(x.a){x.a="X";x.i=x.iv=0;continue;}                     //collision
 		let iv=x.iv;x.a=x.i;x.i=x.iv=0;                           //place down,clear i,iv
 		if(!x.t&&x.a!="D")    {x.a="X";continue;}                 //only Ducks can stand on water
 		if(x.t=="i")          {x.v=iv;x.m=1;inMotion=1;continue;} //slip on ice
@@ -147,9 +147,9 @@ let dirBtn=v=>{                                     //v:vector
 		let unlock=nbors.map(([ni,nj])=>menu[ni][nj].l).filter(x=>x&&Math.abs(x-lv)<4);
 		unlocked=uniq([...unlock,...unlocked]);done=uniq([lv,...[unlocked.includes(gg)?[gg]:[]],...done]); //write to array
 		localStorage.done=JSON.stringify(done);localStorage.unlocked=JSON.stringify(unlocked);updMenu();   //write to localStorage
-		setTimeout(backBtn,1000);                                                                           //autoback
+		setTimeout(backBtn,1000);                                                                          //autoback
 	}
-	history.push(JSON.stringify(state));              //add to history
+	history.push(JSON.stringify(state));                        //add to history
 	if(state.e==2){undoing=1;setTimeout(_=>{zBtn(1);},500);}    //autoundo
 };
 
