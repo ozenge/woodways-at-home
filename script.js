@@ -97,7 +97,7 @@ let draw=(g,s)=>{
 	let co={W:"steelblue",w:"chocolate",i:"cyan",lspring:"lightgreen",lwinter:"azure",lautumn:"bisque"};
 	let em=x=>String.fromCharCode(...{
 		r:[0xD83E,0xDEA8],g:[0xD83D,0xDEA9],p:[0xD83C,0xDF00],s:[0xD83C,0xDF1F],
-		F:[0xD83D,0xDC15],B:[0xD83E,0xDDAC],D:[0xD83E,0xDD86],X:[0xD83D,0xDCA5] //dog F for consistency
+		F:[0xD83D,0xDC15],B:[/*0xD83E,0xDDAC*/0xD83D,0xDC03],D:[0xD83E,0xDD86],X:[0xD83D,0xDCA5] //dog F for consistency
 	}[x]);
 	let cw=800,gh=g.length;gw=g[0].length,w=(cw-20)/Math.max(gh,gw),oy=(cw-gh*w)/2,ox=(cw-gw*w)/2;  //w:side-length
 	ctx.clearRect(0,0,cw,cw);
